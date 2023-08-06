@@ -8,9 +8,8 @@ object Parsers {
   val open = Parser.char('(')
   val close = Parser.char(')')
   val end = Parser.char('\n')
-  val arep = alpha.rep.map(_.toList.mkString)
+  val id = alpha.rep.map(_.toList.mkString)
   val expr = Parser.recursive { recurse =>
-    val id = arep
     val sub = recurse.between($ ~ open, close)
     val call = id ~ (sp *> Parser.oneOf(sub :: id :: Nil)).rep0.map(_.toList)
     Parser.oneOf(call :: id :: Nil)
