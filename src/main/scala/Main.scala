@@ -1,8 +1,9 @@
 import cats.effect.IO
 import cats.effect.std.Console
 import cats.effect.unsafe.implicits.global
+import cats.parse.Parser.Error
 
-@main def hello: Unit =
+@main def hello =
   while (true) {
     program.unsafeRunSync()
   }
